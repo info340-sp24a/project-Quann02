@@ -36,3 +36,15 @@ body {
     border: 1px solid #1abc9c; /* Teal border */
 }
 
+footer {
+    display: none;
+}
+
+@media (min-width: 768px) {
+    footer {
+        bottom: 0;
+        display: block;
+        margin-top: 20px;
+        position: fixed;
+    }
+}

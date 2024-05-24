@@ -3,6 +3,7 @@ body {
     color: white;
     font-family: 'Montserrat', sans-serif;
 }
+
 .header-space {
     display: flex;
     align-items: center;
@@ -10,19 +11,23 @@ body {
     padding: 20px;
     background-color: #1c1c1c;
 }
+
 .app-logo {
     height: 50px;
 }
+
 .header-nav a {
     margin: 0 15px;
     color: white;
     text-decoration: none;
 }
+
 .main-title {
     text-align: center;
     margin-top: 30px;
     font-size: 2.5rem;
 }
+
 .art-gallery {
     display: flex;
     justify-content: center;
@@ -30,20 +35,24 @@ body {
     gap: 20px;
     padding: 20px;
 }
+
 .art-card {
     background-color: #1c1c1c;
     border-radius: 10px;
     width: 300px;
 }
+
 .art-card:hover {
     transform: scale(1.05);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
+
 .art-card img {
     width: 100%;
     height: auto;
     display: block;
 }
+
 .art-card-title {
     padding: 15px;
     text-align: center;
@@ -51,7 +60,7 @@ body {
 }
 
 .footer-container {
-    background-color: #1c1c1c;
+    background-color: #171717;
     padding: 20px;
     text-align: center;
 }
