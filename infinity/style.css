@@ -58,7 +58,8 @@ body {
 /*Above */
 
 footer {
-    position: absolute;
+    background-color: #171717;
+    position: fixed;
     left: 0;
     bottom: 0;
     width: 100%;
