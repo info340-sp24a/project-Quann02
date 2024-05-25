@@ -13,11 +13,11 @@ body {
 }
 
 .app-logo {
-    height: 50px;
+    height: 80px;
 }
 
 .header-nav a {
-    margin: 0 15px;
+    margin: 0px;
     color: white;
     text-decoration: none;
 }
@@ -58,6 +58,34 @@ body {
     padding: 15px;
     text-align: center;
     font-size: 1.2rem;
+}
+
+.artist-gallery {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+}
+
+.artist-card {
+    background-color: #1c1c1c;
+    border-radius: 10px;
+    width: 150px;
+    text-align: center;
+    padding: 10px;
+}
+
+.artist-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+}
+
+.artist-card-title {
+    margin-top: 10px;
+    font-size: 1rem;
+    color: #1abc9c;
 }
 
 .footer-container {
