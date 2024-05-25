@@ -86,10 +86,8 @@ body {
     background-color: #e0e0e0;
 }
 
-.footer-container {
-    background-color: #1c1c1c;
-    padding: 20px;
-    text-align: center;
+footer {
+    display: none;
 }
 
 .light-mode .footer-container {
@@ -104,4 +102,21 @@ body {
     cursor: pointer;
     border-radius: 5px;
     margin: 20px;
+}
+
+@media (min-width: 598px) {
+    footer {
+        background-color: #171717;
+        width: 100%;
+        bottom: 0;
+        display: block;
+        margin-top: 20px;
+        position: fixed;
+    }
+    
+    .footer-container {
+        text-align: center;
+        padding: 1rem;
+        margin-top: auto;
+    }
 }

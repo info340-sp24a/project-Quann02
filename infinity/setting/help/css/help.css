@@ -49,6 +49,7 @@ body {
     flex-direction: column;
     gap: 20px;
     padding: 20px;
+    margin-bottom: 100px;
 }
 
 .help-topic {
@@ -77,8 +78,23 @@ body {
     color: #cccccc;
 }
 
-.footer-container {
-    background-color: #1c1c1c;
-    padding: 20px;
-    text-align: center;
+footer {
+    display: none;
+}
+
+@media (min-width: 598px) {
+    footer {
+        background-color: #171717;
+        width: 100%;
+        bottom: 0;
+        display: block;
+        margin-top: 20px;
+        position: fixed;
+    }
+    
+    .footer-container {
+        text-align: center;
+        padding: 1rem;
+        margin-top: auto;
+    }
 }
