@@ -8,10 +8,6 @@ body {
     display: none;
 }
 
-.app-logo {
-    height: 50px;
-}
-
 .header-nav {
     display: none;
 }
@@ -35,6 +31,7 @@ body {
     background-color: #1c1c1c;
     border-radius: 10px;
     width: 300px;
+    cursor: pointer;
 }
 
 .art-card:hover {
