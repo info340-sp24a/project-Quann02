@@ -96,7 +96,7 @@ footer {
 
     .header-nav {
         display: flex;
-        margin-right: 1%;
-        gap: 20px;
+        margin-right: 15px;
+        gap: 34px;
     }
 }
