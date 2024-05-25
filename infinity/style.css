@@ -44,7 +44,7 @@ body {
 }
 
 /* Other nav bar stuff from creationpage.css */
-.nav-bar {
+/* .nav-bar {
     display: none;
 }
 
@@ -54,7 +54,7 @@ body {
 
 .nav-link:hover .nav-icon {
     filter: brightness(50%);
-}
+} */
 /*Above */
 
 footer {
@@ -91,7 +91,7 @@ footer {
 }
 
 /*From creationpage.css*/
-@media (max-width: 797.6px){
+/* @media (max-width: 797.6px){
     
     .nav-bar {
         position: fixed;
@@ -126,10 +126,10 @@ footer {
     .dropdown {
         display: none;
     }
-}
+} */
 
 /*From creation page*/
-@media (min-width: 768px) {
+/* @media (min-width: 768px) {
     .header-space {
         background-color: transparent;
     }
@@ -240,4 +240,4 @@ footer {
     .material-icons{
         display: none;
     }
-}
+} */
