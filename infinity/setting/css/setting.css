@@ -39,6 +39,10 @@
     border: 1px solid #1abc9c;
 }
 
+.card.h-100.text-center:hover {
+    border: 1px solid #00ffcc;
+}
+
 footer {
     display: none;
 }
