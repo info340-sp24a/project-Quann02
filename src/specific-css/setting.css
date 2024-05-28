@@ -1,65 +1,54 @@
-body {
-    background-color: #121212;
-    color: white;
-    font-family: 'Montserrat', sans-serif;
+.header-nav {
+    display: none;
 }
 
 .dropdown {
     display: none;
 }
 
-.header-nav {
+.page-title {
+    text-align: center;
+    margin-top: 2%;
+    color: #1abc9c;
+    padding-bottom: 1rem;
+}
+
+.card-body {
+    padding: 20px;
+    margin: 10px;
+    border-radius: 8px;
+    background-color: #1c1c1c;
+    color: #1abc9c;
+}
+
+.card-body i {
+    font-size: 48px;
+    color: #1abc9c;
+    margin-bottom: 20px;
+}
+
+.card-title {
+    font-size: 18px;
+    font-weight: 500;
+    color: #1abc9c;
+    margin-top: 10px;
+}
+
+.card.h-100.text-center {
+    background-color: #1c1c1c;
+    border: 1px solid #1abc9c;
+}
+
+.card.h-100.text-center:hover {
+    border: 1px solid #00ffcc;
+}
+
+footer {
     display: none;
 }
 
-.main-title {
-    text-align: center;
-    margin-top: 30px;
-    font-size: 2.5rem;
-}
-
-.art-gallery {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 20px;
-    padding: 20px;
-    margin-bottom: 80px;
-}
-
-.art-card {
-    background-color: #1c1c1c;
-    border-radius: 10px;
-    width: 300px;
-    cursor: pointer;
-}
-
-.art-card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-}
-
-.art-card img {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
-.art-card-title {
-    padding: 15px;
-    text-align: center;
-    font-size: 1.2rem;
-}
-
-/* .footer-container {
-    background-color: #171717;
-    padding: 20px;
-    text-align: center;
-} */
-
-.art-card-actions {
-    text-align: center;
-    word-spacing: 6.5rem;
+.main-space {
+    margin-bottom: 60px;
 }
 
 .navigation-space {
@@ -91,13 +80,13 @@ body {
     filter: brightness(50%);
 }
 
-footer {
-    display: none;
-}
-
-@media(min-width: 598px) {
+@media (min-width: 598px) {
     .navigation-space {
         display: none;
+    }
+
+    .dropdown {
+        display: block;
     }
 
     .dropdown {
@@ -139,23 +128,26 @@ footer {
         background-color: hsl(0, 0%, 90%);
     }
 
-    footer {
-        display: block;
+    .main-space {
+        margin-bottom: 100px;
     }
 }
 
-@media(min-width: 768px) {
+@media (min-width: 768px) {
+    footer {
+        bottom: 0;
+        display: block;
+        margin-top: 20px;
+        position: fixed;
+    }
+
     .dropdown {
         display: none;
     }
 
     .header-nav {
-        display: block;
-    }
-
-    .header-nav a {
-        margin: 0 15px;
-        color: white;
-        text-decoration: none;
+        display: flex;
+        margin-right: 15px;
+        gap: 34px;
     }
 }
