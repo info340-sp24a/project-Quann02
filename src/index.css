@@ -119,6 +119,10 @@ footer {
         margin-right: 0;
         position: relative;
     }
+
+    .header-space {
+        justify-content: center;
+    }
 }
 
 @media(min-width: 598px) {
