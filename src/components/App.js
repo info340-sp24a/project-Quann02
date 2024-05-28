@@ -1,6 +1,8 @@
+import { Homepage } from "./Homepage.js";
+
 function App() {
   return (
-    <h1>Infinity React Application</h1>
+    <Homepage />
   );
 }
 
