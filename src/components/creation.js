@@ -36,7 +36,7 @@ function ImageUploader() {
                         {imagePreviewUrl ? (
                             <img src={imagePreviewUrl} alt="Uploaded Preview" className="img-fluid" />
                         ) : (
-                            <img src="./imgs/image.jpg" alt="Upload Icon" className="img-fluid" />
+                            <img src="./imgs/profile-1.jpg" alt="Upload Icon" className="img-fluid" />
                         )}
                     </div>
                 </div>
