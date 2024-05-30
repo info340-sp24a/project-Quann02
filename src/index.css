@@ -1,7 +1,11 @@
 body {
-    background-color: #121212;
-    color: white;
     font-family: 'Montserrat', sans-serif;
+    background-color: #121212;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
 }
 
 .dropdown {
@@ -12,54 +16,65 @@ body {
     display: none;
 }
 
-.main-title {
-    text-align: center;
-    margin-top: 30px;
-    font-size: 2.5rem;
-}
-
-.art-gallery {
+.header-space {
     display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 20px;
-    padding: 20px;
-    margin-bottom: 80px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem;
+    height: 60px;
 }
 
-.art-card {
-    background-color: #1c1c1c;
-    border-radius: 10px;
-    width: 300px;
-    cursor: pointer;
+.app-logo {
+    max-width: 80px;
+    margin-top: -3px;
 }
 
-.art-card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-}
-
-.art-card img {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
-.art-card-title {
-    padding: 15px;
+.webpage-title {
+    font-family: 'Kaushan Script', cursive, sans-serif;
+    font-size: 2rem;
+    color: #ff4081;
+    position: absolute;
     text-align: center;
-    font-size: 1.2rem;
+    max-width: 80px;
+
+    margin-left: 80px;
 }
 
-/* .footer-container {
+.header-nav a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+footer {
+    background-color: #171717;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+.footer-container {
     background-color: #171717;
     padding: 20px;
     text-align: center;
-} */
+}
 
-.art-card-actions {
-    text-align: center;
-    word-spacing: 6.5rem;
+.search-bar {
+    margin: 20px auto;
+    width: 80%;
+    max-width: 600px;
+}
+
+.search-bar .form-control {
+    border: 2px solid #1abc9c;
+    border-radius: 25px;
+    padding: 10px 20px;
+    background-color: #1c1c1c;
+    color: white;
+}
+
+.search-bar .form-control::placeholder {
+    color: #aaa;
 }
 
 .navigation-space {
@@ -93,6 +108,21 @@ body {
 
 footer {
     display: none;
+}
+
+@media (max-width: 430px) {
+    .webpage-title {
+        display: none;
+    }
+
+    .app-logo {
+        margin-right: 0;
+        position: relative;
+    }
+
+    .header-space {
+        justify-content: center;
+    }
 }
 
 @media(min-width: 598px) {
@@ -154,7 +184,7 @@ footer {
     }
 
     .header-nav a {
-        margin: 0 15px;
+        margin: 0 25px;
         color: white;
         text-decoration: none;
     }
