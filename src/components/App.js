@@ -1,10 +1,10 @@
 import { Homepage } from "./Homepage.js";
 // import { Settings } from "./Settings.js";
-import ImageUploader from "./creation.js";
+// import ImageUploader from "./CreationPage.js";
 
 function App() {
   return (
-    <ImageUploader/>
+    <Homepage/>
 
   );
 }

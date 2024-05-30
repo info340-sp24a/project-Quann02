@@ -1,3 +1,5 @@
+import '../specific-css/base.css'
+
 export function Homepage(props) {
     return (
         <div>
