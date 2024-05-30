@@ -168,10 +168,6 @@ footer {
     .dropdown a:hover {
         background-color: hsl(0, 0%, 90%);
     }
-
-    footer {
-        display: block;
-    }
 }
 
 @media(min-width: 768px) {
@@ -187,5 +183,11 @@ footer {
         margin: 0 25px;
         color: white;
         text-decoration: none;
+    }
+}
+
+@media (min-width: 1300px) {
+    footer {
+        display: block;
     }
 }

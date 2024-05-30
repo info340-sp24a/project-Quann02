@@ -2,7 +2,7 @@ import '../specific-css/settings.css';
 
 export function Settings(props) {
     return (
-        <body>
+        <div>
             <header className="header-space">
                 <img className="app-logo" src="../imgs/logo.png" alt="logo" />
                 <h1 className="webpage-title">Infinity</h1>
@@ -58,6 +58,6 @@ export function Settings(props) {
                     <p>&copy; 2024 Infinity. All rights reserved.</p>
                 </div>
             </footer>
-        </body>
+        </div>
     );
 }
