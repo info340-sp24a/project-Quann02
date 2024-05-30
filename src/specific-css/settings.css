@@ -1,0 +1,46 @@
+.page-title {
+    text-align: center;
+    margin-top: 2%;
+    color: #1abc9c;
+    padding-bottom: 1rem;
+}
+
+.card-body {
+    padding: 20px;
+    margin: 10px;
+    border-radius: 8px;
+    background-color: #1c1c1c;
+    color: #1abc9c;
+}
+
+.card-body i {
+    font-size: 48px;
+    color: #1abc9c;
+    margin-bottom: 20px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.card-title {
+    font-size: 18px;
+    font-weight: 500;
+    color: #1abc9c;
+    margin-top: 10px;
+}
+
+.card.h-100.text-center {
+    background-color: #1c1c1c;
+    border: 1px solid #1abc9c;
+}
+
+.card.h-100.text-center:hover {
+    border: 1px solid #00ffcc;
+}
+
+@media (min-width: 992px) {
+    .bigger-screens {
+        justify-content: center; /* Center the cards horizontally */
+    }
+}
