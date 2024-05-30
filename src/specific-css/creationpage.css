@@ -23,20 +23,22 @@
 }
 
 .PreviewImage {
-    width: 100%; /* Set the width as needed */
-    height: 500px; /* Set a fixed height or as needed */
+    width: 100%;
+    height: 500px; 
     border: 3px solid #1abc9c;
     cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden; /* Ensures content does not overflow */
+    overflow: hidden; 
     background-color: white;
 }
-
+.upload-icon-wrapper {
+    margin-bottom: 20px;  
+}
 .img-fluid {
-    width: 100%; /* Makes the image responsive */
-    height: 100%; /* Cover the height of the container */
+    width: 100%; 
+    height: 100%;
     object-fit: contain; 
 
 }
