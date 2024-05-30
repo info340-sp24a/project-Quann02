@@ -1,3 +1,5 @@
+import '../specific-css/settings.css';
+
 export function Settings(props) {
     return (
         <body>
@@ -17,10 +19,12 @@ export function Settings(props) {
                 </div>
             </header>
             <main className="main-space container">
-                <h2 className="page-title">Account Settings</h2>
-                <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                <h2 className="page-title">Infinity Settings</h2>
+                {/* For large screens "bigger-screens," additional CSS was written to center them for 992px and greater viewports. */}
+                {/* "row-cols-lg-3" was taken off to increase the size of the cards. However, it can be added back based on personal preference. */}
+                <div className="row row-cols-1 row-cols-md-2 g-4 bigger-screens">
                     <div className="col">
-                        <a href="./creationpage/creationpage.html" style="text-decoration: none; color: inherit;">
+                        <a href="./creationpage/creationpage.html">
                             <div className="card h-100 text-center">
                                 <div className="card-body">
                                     <i className="material-icons" title="Upload and manage your images">image</i>
@@ -30,17 +34,7 @@ export function Settings(props) {
                         </a>
                     </div>
                     <div className="col">
-                        <a href="./privacy/privacy.html" style="text-decoration: none; color: inherit;">
-                            <div className="card h-100 text-center">
-                                <div className="card-body">
-                                    <i className="material-icons" title="Customize your privacy settings">privacy_tip</i>
-                                    <h5 className="card-title">Privacy Settings</h5>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div className="col">
-                        <a href="./help/help.html" style="text-decoration: none; color: inherit;">
+                        <a href="./help/help.html">
                             <div className="card h-100 text-center">
                                 <div className="card-body">
                                     <i className="material-icons" title="Get help now">help</i>
