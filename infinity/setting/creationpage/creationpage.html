@@ -22,25 +22,18 @@
         <h2 class="page-title">Upload Image</h2>
         <div class="container text-center text-white">
             <div class="card mb-3">
-                <div class="card-body" id="PreviewImage" class="clickImage" onclick="document.getElementById('artupload').click();">
-                    <img id="imagePreview" src="./img/image.jpeg" alt="Please upload image" class="img-fluid" />
-                    <input type="file" name="artupload" accept="image/*" required class="form-control-file" id="fileInput" style="display: none;">
-                </div>
+                <div class="card-body clickImage" onclick="document.querySelector('.fileInput').click();">
+                    <img class="imagePreview img-fluid" src="../../imgs/image.jpeg" alt="Please upload image" />
+                    <input type="file" name="artupload" accept="image/*" required class="form-control-file fileInput" style="display: none;">
+                </div>                
             </div>
             <button type="submit" class="btn btn-primary py-2" aria-label="button for submitting artwork">Upload Your Artwork</button>
         </div>
     </main>
-    <nav class="navigation-space">
-        <a href="../../index.html" class="nav-link">
-            <i class="material-icons nav-icon">home</i>
-        </a>
-        <a href="../setting.html" class="nav-link">
-            <i class="material-icons nav-icon">settings</i>
-        </a>
-    </nav>
+    
    
     <!-- Java script file -->
-    <script src="js/creation.js"></script>
+    <script src="../../src/creation.js"></script>
     <footer>
         <div class="footer-container">
             <p>&copy; 2024 Infinity. All rights reserved.</p>
