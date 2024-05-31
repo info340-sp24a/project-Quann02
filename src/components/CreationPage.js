@@ -3,6 +3,7 @@ import '../specific-css/creationpage.css';
 
 function ImageUploader() {
     const [imagePreviewUrl, setImagePreviewUrl] = useState('');
+    const [imageTitle, setImageTitle] = useState('');
 
     const handleFileChange = (event) => {
         const file = event.target.files[0];
@@ -18,7 +19,9 @@ function ImageUploader() {
     const handleClickImageArea = () => {
         document.getElementById('fileInput').click();
     };
-
+    const handleTitleChange = (event) => {
+        setImageTitle(event.target.value);
+    };
     return (
         <div>
             <header className="header-space">
@@ -48,6 +51,9 @@ function ImageUploader() {
                             )}
                         </div>
                     </div>
+                    <textarea
+                        className="form-control mb-3" placeholder="Enter image title" onChange={handleTitleChange}>
+                    </textarea>
                     <input
                         type="file"
                         accept="image/*"
