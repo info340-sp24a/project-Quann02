@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 function ImageUploader() {
     const [imagePreviewUrl, setImagePreviewUrl] = useState('');
+    const [imageTitle, setImageTitle] = useState('');
 
     const handleFileChange = (event) => {
         const file = event.target.files[0];
@@ -19,7 +20,9 @@ function ImageUploader() {
     const handleClickImageArea = () => {
         document.getElementById('fileInput').click();
     };
-
+    const handleTitleChange = (event) => {
+        setImageTitle(event.target.value);
+    };
     return (
         <div>
             <header className="header-space">
@@ -49,6 +52,9 @@ function ImageUploader() {
                             )}
                         </div>
                     </div>
+                    <textarea
+                        className="form-control mb-3" placeholder="Image Title" onChange={handleTitleChange}>
+                    </textarea>
                     <input
                         type="file"
                         accept="image/*"
@@ -56,7 +62,7 @@ function ImageUploader() {
                         onChange={handleFileChange}
                         id="fileInput"
                     />
-                    <button className="btn btn-primary py-3">Upload Your Artwork</button>
+                    <button className="btn btn-primary py-3">Upload Image</button>
                 </main>
             </div>
             <nav className="navigation-space">
