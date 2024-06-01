@@ -23,34 +23,19 @@ export function Help(props) {
                 <h1 class="page-title">Help & Support</h1>
                 <div class="help-section">
                     <div class="help-topic">
-                        <i class="material-icons">person</i>
-                        <h2>Account Settings</h2>
-                        <p>Learn how to manage your account settings, including updating your profile, changing your password, and configuring privacy settings.</p>
-                    </div>
-                    <div class="help-topic">
-                        <i class="material-icons">notifications</i>
-                        <h2>Notifications</h2>
-                        <p>Find out how to manage your notifications to stay updated with what's happening without getting overwhelmed.</p>
-                    </div>
-                    <div class="help-topic">
                         <i class="material-icons">security</i>
-                        <h2>Security</h2>
-                        <p>Get tips on how to keep your account secure, including setting up two-factor authentication and recognizing phishing attempts.</p>
+                        <h2>Security Tips</h2>
+                        <p>When downloading images from external sources, ensure there is no embedded malware by checking HTTPS protocol.</p>
                     </div>
                     <div class="help-topic">
                         <i class="material-icons">privacy_tip</i>
-                        <h2>Privacy</h2>
-                        <p>Understand our privacy policies and learn how to control who sees your information and posts.</p>
+                        <h2>Privacy Tips</h2>
+                        <p>When uploading personal pictures, ensure there is no personal identifiable information attached.</p>
                     </div>
                     <div class="help-topic">
                         <i class="material-icons">help</i>
                         <h2>Getting Started</h2>
-                        <p>New to Infinity Arts? Here’s a quick guide to help you get started with creating, sharing, and connecting with others.</p>
-                    </div>
-                    <div class="help-topic">
-                        <i class="material-icons">contact_support</i>
-                        <h2>Contact Support</h2>
-                        <p>If you have any other questions or need further assistance, contact our support team for help.</p>
+                        <p>New to Infinity Arts? Click on Upload Images to upload pictures to your personal gallery. Each image can be given a description through the comment icon.</p>
                     </div>
                 </div>
             </main>

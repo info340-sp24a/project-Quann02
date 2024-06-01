@@ -26,24 +26,24 @@ export function Settings(props) {
                 {/* "row-cols-lg-3" was taken off to increase the size of the cards. However, it can be added back based on personal preference. */}
                 <div className="row row-cols-1 row-cols-md-2 g-4 bigger-screens">
                     <div className="col">
-                        <a href="/creation">
+                        <Link to="/creation">
                             <div className="card h-100 text-center">
                                 <div className="card-body">
                                     <i className="material-icons" title="Upload and manage your images">image</i>
                                     <h5 className="card-title">Upload Image</h5>
                                 </div>
                             </div>
-                        </a>
+                        </Link>
                     </div>
                     <div className="col">
-                        <a href="/help">
+                        <Link to="/help">
                             <div className="card h-100 text-center">
                                 <div className="card-body">
                                     <i className="material-icons" title="Get help now">help</i>
                                     <h5 className="card-title">Get Help</h5>
                                 </div>
                             </div>
-                        </a>
+                        </Link>
                     </div>
                 </div>
             </main>

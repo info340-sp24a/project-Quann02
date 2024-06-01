@@ -26,7 +26,7 @@ export function Homepage(props) {
             <main>
                 <h2 className="main-title">Personal Gallery</h2>
                 <div className="search-bar">
-                    <input id="prune" type="text" className="form-control" placeholder="Search for artworks..." />
+                    <input id="prune" type="text" className="form-control" placeholder="Search" />
                 </div>
                 <div className="art-gallery">
                     <div className="art-card">

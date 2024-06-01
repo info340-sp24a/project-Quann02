@@ -8,7 +8,7 @@ function App() {
   return (
     <div>
       <Routes>
-        <Route path="/" element={<Homepage />} />
+        <Route index element={<Homepage />} />
         <Route path="/settings" element={<Settings />} />
         <Route path="/creation" element={<ImageUploader />} />
         <Route path="/help" element={<Help />} />
