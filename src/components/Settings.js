@@ -20,6 +20,7 @@ export function Settings(props) {
             </header>
             <main className="main-space container">
                 <h2 className="page-title">Infinity Settings</h2>
+                {/* Reduce card-title to only two, instead of nine*/}
                 {/* For large screens "bigger-screens," additional CSS was written to center them for 992px and greater viewports. */}
                 {/* "row-cols-lg-3" was taken off to increase the size of the cards. However, it can be added back based on personal preference. */}
                 <div className="row row-cols-1 row-cols-md-2 g-4 bigger-screens">
