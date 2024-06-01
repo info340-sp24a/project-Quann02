@@ -17,7 +17,7 @@ export function Popup(props) {
                     <button className='close-btn' onClick={() => props.setTrigger(false)}>Close</button>
                     <form>
                         <label>Comment</label>
-                        <input type="text"
+                        <textarea type="text"
                          className="commentBox"
                          name="comment"
                          onChange={(comment) => setComment(comment.target.value)}
