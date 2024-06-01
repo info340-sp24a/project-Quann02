@@ -25,17 +25,17 @@ export function Help(props) {
                     <div class="help-topic">
                         <i class="material-icons">security</i>
                         <h2>Security Tips</h2>
-                        <p>When downloading images from external sources, make sure that there is no embedded malware by checking HTTPS protocol.</p>
+                        <p>When downloading images from external sources, ensure there is no embedded malware by checking HTTPS protocol.</p>
                     </div>
                     <div class="help-topic">
                         <i class="material-icons">privacy_tip</i>
                         <h2>Privacy Tips</h2>
-                        <p>When uploading personal pictures, make sure there is no personal identifiable information attached.</p>
+                        <p>When uploading personal pictures, ensure there is no personal identifiable information attached.</p>
                     </div>
                     <div class="help-topic">
                         <i class="material-icons">help</i>
                         <h2>Getting Started</h2>
-                        <p>New to Infinity Arts? Click on Upload Images to upload pictures to your gallery. Each image can be given a description through the comment icon.</p>
+                        <p>New to Infinity Arts? Click on Upload Images to upload pictures to your personal gallery. Each image can be given a description through the comment icon.</p>
                     </div>
                 </div>
             </main>
