@@ -1,6 +1,11 @@
 import '../specific-css/base.css'
+import {Popup} from './Popup'
+import { useState } from 'react'
+
 
 export function Homepage(props) {
+    const [popUp, setPopup] = useState(false);
+
     return (
         <div>
             <header className="header-space">
@@ -28,32 +33,35 @@ export function Homepage(props) {
                         <img src="./imgs/Firefly Create me a pokemon character art 50375.jpg" alt="Artwork 1" />
                         <div className="art-card-title">Artwork 1</div>
                         <div className="art-card-actions">
-                            <i className="material-icons">chat_bubble_outline</i>
+                            <i className="material-icons" onClick={() => setPopup(true)}>chat_bubble_outline</i>
+                          
                         </div>
                     </div>
                     <div className="art-card">
                         <img src="./imgs/Firefly Create me a pokemon character art 82874.jpg" alt="Artwork 2" />
                         <div className="art-card-title">Artwork 2</div>
                         <div className="art-card-actions">
-                            <i className="material-icons">chat_bubble_outline</i>
+                            <i className="material-icons" onClick={() => setPopup(true)}>chat_bubble_outline</i>
                         </div>
                     </div>
                     <div className="art-card">
                         <img src="./imgs/Firefly Create me a pokemon character art 83189.jpg" alt="Artwork 3" />
                         <div className="art-card-title">Artwork 3</div>
                         <div className="art-card-actions">
-                            <i className="material-icons">chat_bubble_outline</i>
+                            <i className="material-icons" onClick={() => setPopup(true)}>chat_bubble_outline</i>
                         </div>
                     </div>
                     <div className="art-card">
                         <img src="./imgs/Firefly Create me a pokemon character art 9152.jpg" alt="Artwork 4" />
                         <div className="art-card-title">Artwork 4</div>
                         <div className="art-card-actions">
-                            <i className="material-icons">chat_bubble_outline</i>
+                            <i className="material-icons" onClick={() => setPopup(true)}>chat_bubble_outline</i>
                         </div>
                     </div>
                 </div>
             </main>
+            <Popup trigger={popUp} setTrigger={setPopup}/>
+
             <nav className="navigation-space">
                 <a href="./index.html" className="nav-link">
                     <i className="material-icons nav-icon">home</i>
