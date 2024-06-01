@@ -1,4 +1,5 @@
 import '../specific-css/settings.css';
+import { Link } from 'react-router-dom';
 
 export function Settings(props) {
     return (
@@ -7,14 +8,14 @@ export function Settings(props) {
                 <img className="app-logo" src="../imgs/logo.png" alt="logo" />
                 <h1 className="webpage-title">Infinity</h1>
                 <nav className="header-nav">
-                    <a href="../index.html">Home</a>
-                    <a href="./setting.html">Settings</a>
+                    <Link to="/">Home</Link>
+                    <Link to="/settings">Settings</Link>
                 </nav>
                 <div className="dropdown">
                     <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-label="Button for dropdown"></button>
                     <div className="content">
-                        <a href="../index.html">Home</a>
-                        <a href="./setting.html">Settings</a>
+                        <Link to="/">Home</Link>
+                        <Link to="/settings">Settings</Link>
                     </div>
                 </div>
             </header>
@@ -25,7 +26,7 @@ export function Settings(props) {
                 {/* "row-cols-lg-3" was taken off to increase the size of the cards. However, it can be added back based on personal preference. */}
                 <div className="row row-cols-1 row-cols-md-2 g-4 bigger-screens">
                     <div className="col">
-                        <a href="./creationpage/creationpage.html">
+                        <a href="/creation">
                             <div className="card h-100 text-center">
                                 <div className="card-body">
                                     <i className="material-icons" title="Upload and manage your images">image</i>
@@ -35,7 +36,7 @@ export function Settings(props) {
                         </a>
                     </div>
                     <div className="col">
-                        <a href="./help/help.html">
+                        <a href="/help">
                             <div className="card h-100 text-center">
                                 <div className="card-body">
                                     <i className="material-icons" title="Get help now">help</i>
@@ -47,12 +48,12 @@ export function Settings(props) {
                 </div>
             </main>
             <nav className="navigation-space">
-                <a href="../index.html" className="nav-link">
+                <Link to="/" className="nav-link">
                     <i className="material-icons nav-icon">home</i>
-                </a>
-                <a href="./setting.html" className="nav-link">
+                </Link>
+                <Link to="/settings" className="nav-link">
                     <i className="material-icons nav-icon">settings</i>
-                </a>
+                </Link>
             </nav>
             <footer>
                 <div className="footer-container">
