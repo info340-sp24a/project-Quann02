@@ -57,21 +57,20 @@ Once the app is up and running, you can navigate through the different pages:
 
 The app's main components are organized as follows:
 
-src/
-│
-├── specific-css/          # CSS files for specific components
-│   ├── base.css
-│   ├── creationpage.css
-│   ├── help.css
-│   ├── popup.css
-│   └── settings.css
-│
-├── App.js                 # Main app component
-├── CreationPage.js        # Image uploader component
-├── Help.js                # Help and support component
-├── Homepage.js            # Homepage component
-├── Popup.js               # Popup component for comments
-└── Settings.js            # Settings component
+- `src/`: The source directory containing all the app's code and resources.
+  - `specific-css/`: This directory contains CSS files that define the styles for specific components.
+    - `base.css`: Basic CSS for the entire application.
+    - `creationpage.css`: CSS specific to the image upload page.
+    - `help.css`: CSS specific to the help and support page.
+    - `popup.css`: CSS specific to the popup component.
+    - `settings.css`: CSS specific to the settings page.
+  - `App.js`: The main app component that defines the routing and structure of the app.
+  - `CreationPage.js`: The component responsible for handling image uploads and previews.
+  - `Help.js`: The help and support component that provides information and guidance on various topics.
+  - `Homepage.js`: The homepage component that displays the user's personal gallery of artworks.
+  - `Popup.js`: The popup component for submitting comments on artworks.
+  - `Settings.js`: The settings component that allows users to customize their account preferences.
+
 
 
 ## Components Overview
