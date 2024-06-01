@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import '../specific-css/creationpage.css';
+import { Link } from 'react-router-dom';
 
 function ImageUploader() {
     const [imagePreviewUrl, setImagePreviewUrl] = useState('');
@@ -25,17 +26,17 @@ function ImageUploader() {
     return (
         <div>
             <header className="header-space">
-                <img className="app-logo" src="./imgs/logo.png" alt="logo"></img>
+                <img className="app-logo" src="../imgs/logo.png" alt="logo" />
                 <h1 className="webpage-title">Infinity</h1>
                 <nav className="header-nav">
-                    <a href="./index.html">Home</a>
-                    <a href="./setting/setting.html">Settings</a>
+                    <Link to="/">Home</Link>
+                    <Link to="/settings">Settings</Link>
                 </nav>
                 <div className="dropdown">
                     <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-label="Button for dropdown"></button>
                     <div className="content">
-                        <a href="./index.html">Home</a>
-                        <a href="./setting/setting.html">Settings</a>
+                        <Link to="/">Home</Link>
+                        <Link to="/settings">Settings</Link>
                     </div>
                 </div>
             </header>
@@ -52,7 +53,7 @@ function ImageUploader() {
                         </div>
                     </div>
                     <textarea
-                        className="form-control mb-3" placeholder="Enter image title" onChange={handleTitleChange}>
+                        className="form-control mb-3" placeholder="Image Title" onChange={handleTitleChange}>
                     </textarea>
                     <input
                         type="file"
@@ -61,16 +62,16 @@ function ImageUploader() {
                         onChange={handleFileChange}
                         id="fileInput"
                     />
-                    <button className="btn btn-primary py-3">Upload Your Artwork</button>
+                    <button className="btn btn-primary py-3">Upload Image</button>
                 </main>
             </div>
             <nav className="navigation-space">
-                <a href="./index.html" className="nav-link">
+                <Link to="/" className="nav-link">
                     <i className="material-icons nav-icon">home</i>
-                </a>
-                <a href="./setting/setting.html" className="nav-link">
+                </Link>
+                <Link to="/settings" className="nav-link">
                     <i className="material-icons nav-icon">settings</i>
-                </a>
+                </Link>
             </nav>
             <footer>
                 <div className="footer-container">
