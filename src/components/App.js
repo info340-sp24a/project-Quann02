@@ -1,12 +1,19 @@
+import {Routes, Route} from 'react-router-dom';
 import { Homepage } from "./Homepage.js";
-// import { Settings } from "./Settings.js";
-// import ImageUploader from "./CreationPage.js";
-// import { Help } from "./Help";
+import { Settings } from "./Settings.js";
+import ImageUploader from "./CreationPage.js";
+import { Help } from "./Help";
 
 function App() {
   return (
-    <Homepage />
-
+    <div>
+      <Routes>
+        <Route path="/" element={<Homepage />} />
+        <Route path="/settings" element={<Settings />} />
+        <Route path="/creation" element={<ImageUploader />} />
+        <Route path="/help" element={<Help />} />
+      </Routes>
+    </div>
   );
 }
 

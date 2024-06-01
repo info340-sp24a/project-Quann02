@@ -1,15 +1,24 @@
+import { Link } from 'react-router-dom';
 import '../specific-css/help.css';
 
 export function Help(props) {
     return (
         <div>
-            {/* <header class="header-space">
-                <nav class="header-nav">
-                    <a href="../setting.html" class="back-button" title="Go back">
-                        <i class="material-icons">arrow_back</i>
-                    </a>
+            <header className="header-space">
+                <img className="app-logo" src="../imgs/logo.png" alt="logo" />
+                <h1 className="webpage-title">Infinity</h1>
+                <nav className="header-nav">
+                    <Link to="/">Home</Link>
+                    <Link to="/settings">Settings</Link>
                 </nav>
-            </header> */}
+                <div className="dropdown">
+                    <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-label="Button for dropdown"></button>
+                    <div className="content">
+                        <Link to="/">Home</Link>
+                        <Link to="/settings">Settings</Link>
+                    </div>
+                </div>
+            </header>
             <main class="main-space container">
                 <h1 class="page-title">Help & Support</h1>
                 <div class="help-section">
@@ -45,6 +54,14 @@ export function Help(props) {
                     </div>
                 </div>
             </main>
+            <nav className="navigation-space">
+                <Link to="/" className="nav-link">
+                    <i className="material-icons nav-icon">home</i>
+                </Link>
+                <Link to="/settings" className="nav-link">
+                    <i className="material-icons nav-icon">settings</i>
+                </Link>
+            </nav>
             <footer>
                 <div class="footer-container">
                     <p>&copy; 2024 Infinity. All rights reserved.</p>
