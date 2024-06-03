@@ -43,6 +43,7 @@ function ImageUploader(props) {
         await set (dbRef,{
             title:imageTitle, url: imageUrl
         });
+        navigate('/');
     }
 
     return (
