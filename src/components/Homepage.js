@@ -98,7 +98,7 @@ export function Homepage() {
                                         <p key={index}>{comment}</p>
                                     ))
                                 ) : (
-                                    <p>No comments yet</p>
+                                    null
                                 )}
                             </div>
                             <div className="art-card-actions">
