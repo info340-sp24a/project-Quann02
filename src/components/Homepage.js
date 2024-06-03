@@ -52,7 +52,7 @@ export function Homepage() {
                 <div className="art-gallery">
                     {images.length > 0 ? images.map(image => (
                         <div key={image.id} className="art-card">
-                            <img src={image.url} alt={image.title} />
+                            <img src={image.imageUrl} alt={image.title} />
                             <div className="art-card-title">{image.title}</div>
                             <div className="art-card-actions">
                                 <i className="material-icons" onClick={() => setPopup(true)}>chat_bubble_outline</i>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import '../specific-css/creationpage.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { ref as dbRef, push, set } from "firebase/database";
 import { storage, database } from '../../firebaseConfig'; // Ensure the path is correct
@@ -9,6 +9,7 @@ function ImageUploader() {
     const [imagePreviewUrl, setImagePreviewUrl] = useState('');
     const [imageTitle, setImageTitle] = useState('');
     const [imageFile, setImageFile] = useState(null);
+    const navigate = useNavigate();
 
     const handleFileChange = (event) => {
         const file = event.target.files[0];
