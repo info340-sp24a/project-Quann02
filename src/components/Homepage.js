@@ -1,10 +1,31 @@
-import '../specific-css/base.css'
-import {Popup} from './Popup'
-import { useState } from 'react'
+import React, { useState, useEffect } from 'react';
+import '../specific-css/base.css';
+import { Popup } from './Popup';
 import { Link } from 'react-router-dom';
+import { getDatabase, ref, onValue } from "firebase/database";
 
-export function Homepage(props) {
+export function Homepage() {
     const [popUp, setPopup] = useState(false);
+    const [images, setImages] = useState([]);
+
+    useEffect(() => {
+        const database = getDatabase();
+        const imagesRef = ref(database, 'images');
+        onValue(imagesRef, (snapshot) => {
+            const data = snapshot.val();
+            if (data) {
+                const loadedImages = [];
+                for (let id in data) {
+                    loadedImages.push({ id, ...data[id] });
+                }
+                setImages(loadedImages);
+            } else {
+                console.error("No data available");
+            }
+        }, (error) => {
+            console.error("Error fetching data: ", error);
+        });
+    }, []);
 
     return (
         <div>
@@ -29,38 +50,18 @@ export function Homepage(props) {
                     <input id="prune" type="text" className="form-control" placeholder="Search" />
                 </div>
                 <div className="art-gallery">
-                    <div className="art-card">
-                        <img src="./imgs/Firefly Create me a pokemon character art 50375.jpg" alt="Artwork 1" />
-                        <div className="art-card-title">Artwork 1</div>
-                        <div className="art-card-actions">
-                            <i className="material-icons" onClick={() => setPopup(true)}>chat_bubble_outline</i>
-                          
+                    {images.length > 0 ? images.map(image => (
+                        <div key={image.id} className="art-card">
+                            <img src={image.imageUrl} alt={image.title} />
+                            <div className="art-card-title">{image.title}</div>
+                            <div className="art-card-actions">
+                                <i className="material-icons" onClick={() => setPopup(true)}>chat_bubble_outline</i>
+                            </div>
                         </div>
-                    </div>
-                    <div className="art-card">
-                        <img src="./imgs/Firefly Create me a pokemon character art 82874.jpg" alt="Artwork 2" />
-                        <div className="art-card-title">Artwork 2</div>
-                        <div className="art-card-actions">
-                            <i className="material-icons" onClick={() => setPopup(true)}>chat_bubble_outline</i>
-                        </div>
-                    </div>
-                    <div className="art-card">
-                        <img src="./imgs/Firefly Create me a pokemon character art 83189.jpg" alt="Artwork 3" />
-                        <div className="art-card-title">Artwork 3</div>
-                        <div className="art-card-actions">
-                            <i className="material-icons" onClick={() => setPopup(true)}>chat_bubble_outline</i>
-                        </div>
-                    </div>
-                    <div className="art-card">
-                        <img src="./imgs/Firefly Create me a pokemon character art 9152.jpg" alt="Artwork 4" />
-                        <div className="art-card-title">Artwork 4</div>
-                        <div className="art-card-actions">
-                            <i className="material-icons" onClick={() => setPopup(true)}>chat_bubble_outline</i>
-                        </div>
-                    </div>
+                    )) : <p>No images available</p>}
                 </div>
             </main>
-            <Popup trigger={popUp} setTrigger={setPopup}/>
+            <Popup trigger={popUp} setTrigger={setPopup} />
             <nav className="navigation-space">
                 <Link to="/" className="nav-link">
                     <i className="material-icons nav-icon">home</i>
