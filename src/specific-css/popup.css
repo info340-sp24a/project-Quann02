@@ -8,8 +8,6 @@
     height: 75vh;
     border: 2px solid white;
     border-radius: 15px;
-
-
     display: flex;
     justify-content: center;
     align-items: center;
@@ -26,6 +24,7 @@ form textarea {
     width: 100%;
     height: 58vh;
     box-sizing: border-box;
+    resize: none;
 }
 
 .close-btn {
