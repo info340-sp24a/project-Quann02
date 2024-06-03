@@ -4,6 +4,8 @@ import { Popup } from './Popup';
 import { Link } from 'react-router-dom';
 import { getDatabase, ref, onValue } from "firebase/database";
 
+// We Cook
+
 export function Homepage() {
     const [popUp, setPopup] = useState(false);
     const [images, setImages] = useState([]);
