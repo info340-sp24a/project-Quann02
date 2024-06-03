@@ -8,6 +8,10 @@ import { storage, database } from '../../firebaseConfig'; // Adjust the import p
 =======
 import {getStorage, ref as storageRef, uploadBytes, getDownloadURL} from 'firebase/storage';
 import { getDatabase, ref, set } from 'firebase/database';
+<<<<<<< HEAD
+>>>>>>> main
+=======
+import { v4 as uuidv4 } from 'uuid'; //https://www.npmjs.com/package/uuid
 >>>>>>> main
 
 
@@ -35,13 +39,16 @@ function ImageUploader(props) {
     const handleImageUpload = async(event) => {
         console.log("uploading", imageFile);
         const storage = getStorage();
-        const imageRef = storageRef(storage, 'images/' + imageFile.getDownloadURL);
+        const uniqueImageId = uuidv4(); //give it a unqiue identifier, don't remove this
+        const imageRef = storageRef(storage, 'images/' + uniqueImageId);
+        // const imageRef = storageRef(storage, 'images/' + imageFile.getDownloadURL);
         await uploadBytes(imageRef, imageFile)
-        const imageUrl = await getDownloadURL(imageRef);
+        const imageUrl = await getDownloadURL(imageRef); //don't change
         console.log(imageUrl);
 
         const db = getDatabase();
-        const dbRef = ref(db, 'images/' + imageFile.getDownloadURL)
+        const dbRef = ref(db, 'images/' + uniqueImageId) //remove image.File to uniqueImage, don't change
+        // const dbRef = ref(db, 'images/' + imageFile.getDownloadURL)
         await set (dbRef,{
             title:imageTitle, url: imageUrl
         });
