@@ -40,6 +40,7 @@ export function Homepage() {
         const imageRef = ref(db, 'images/' + imageId);
 
         // Update the comments field in the database
+        //reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find
         const updatedComments = images.find(image => image.id === imageId).comments || [];
         updatedComments.push(newComments[imageId]);
 
@@ -85,7 +86,7 @@ export function Homepage() {
                             <div className="art-card-comments">
                                 {image.comments && image.comments.length > 0 ? (
                                     image.comments.map((comment, index) => (
-                                        <p key={index}>{comment}</p>
+                                        <p key={index}>{comment}</p> //reference https://www.geeksforgeeks.org/reactjs-keys/
                                     ))
                                 ) : (
                                     <p>No comments yet</p>
@@ -107,7 +108,7 @@ export function Homepage() {
                     )) : <p>No images available</p>}
                 </div>
             </main>
-            <Popup trigger={popUp} setTrigger={setPopup} />
+            {/* <Popup trigger={popUp} setTrigger={setPopup} /> */}
             <nav className="navigation-space">
                 <Link to="/" className="nav-link">
                     <i className="material-icons nav-icon">home</i>
