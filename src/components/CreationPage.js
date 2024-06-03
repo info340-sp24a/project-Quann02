@@ -3,7 +3,7 @@ import '../specific-css/creationpage.css';
 import { Link } from 'react-router-dom';
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { ref as dbRef, push, set } from "firebase/database";
-import { storage, database } from '../../firebaseConfig'; // Adjust the import path accordingly
+import { storage, database } from '../firebaseConfig'; // Adjust the import path accordingly
 
 function ImageUploader() {
     const [imagePreviewUrl, setImagePreviewUrl] = useState('');
