@@ -2,11 +2,12 @@ import React, { useState, useEffect } from 'react';
 import '../specific-css/base.css';
 import { Popup } from './Popup';
 import { Link } from 'react-router-dom';
-import { getDatabase, ref, onValue } from "firebase/database";
+import { getDatabase, ref, onValue, update } from "firebase/database";
 
 export function Homepage() {
     const [popUp, setPopup] = useState(false);
     const [images, setImages] = useState([]);
+    const [newComments, setNewComments] = useState({}); // To store comments for each image separately
 
     useEffect(() => {
         const database = getDatabase();
@@ -26,6 +27,32 @@ export function Homepage() {
             console.error("Error fetching data: ", error);
         });
     }, []);
+
+    const handleCommentChange = (event, imageId) => {
+        setNewComments({
+            ...newComments,
+            [imageId]: event.target.value
+        });
+    };
+
+    const handleAddComment = async (imageId) => {
+        const db = getDatabase();
+        const imageRef = ref(db, 'images/' + imageId);
+
+        // Update the comments field in the database
+        const updatedComments = images.find(image => image.id === imageId).comments || [];
+        updatedComments.push(newComments[imageId]);
+
+        await update(imageRef, {
+            comments: updatedComments
+        });
+
+        // Clear the comment input field
+        setNewComments({
+            ...newComments,
+            [imageId]: ''
+        });
+    };
 
     return (
         <div>
@@ -55,8 +82,26 @@ export function Homepage() {
                         <div key={image.id} className="art-card">
                             <img src={image.url} alt={image.title} />
                             <div className="art-card-title">{image.title}</div>
+                            <div className="art-card-comments">
+                                {image.comments && image.comments.length > 0 ? (
+                                    image.comments.map((comment, index) => (
+                                        <p key={index}>{comment}</p>
+                                    ))
+                                ) : (
+                                    <p>No comments yet</p>
+                                )}
+                            </div>
                             <div className="art-card-actions">
-                                <i className="material-icons" onClick={() => setPopup(true)}>chat_bubble_outline</i>
+                                <div className="comment-input-container">
+                                    <input
+                                        type="text"
+                                        placeholder="Add a comment"
+                                        className="comment-input"
+                                        value={newComments[image.id] || ''}
+                                        onChange={(e) => handleCommentChange(e, image.id)}
+                                    />
+                                    <button className="comment-btn" onClick={() => handleAddComment(image.id)}>Add Comment</button>
+                                </div>
                             </div>
                         </div>
                     )) : <p>No images available</p>}
