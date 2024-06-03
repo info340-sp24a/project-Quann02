@@ -48,6 +48,7 @@ export function Homepage() {
                 <h2 className="main-title">Personal Gallery</h2>
                 <div className="search-bar">
                     <input id="prune" type="text" className="form-control" placeholder="Search" />
+                    <button className="btn btn-search">search</button>
                 </div>
                 <div className="art-gallery">
                     {images.length > 0 ? images.map(image => (
