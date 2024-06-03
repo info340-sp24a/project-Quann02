@@ -1,18 +1,9 @@
 import React, { useState } from 'react';
 import '../specific-css/creationpage.css';
 import { Link, useNavigate } from 'react-router-dom';
-<<<<<<< HEAD
-import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import { ref as dbRef, push, set } from "firebase/database";
-import { storage, database } from '../../firebaseConfig'; // Adjust the import path accordingly
-=======
 import {getStorage, ref as storageRef, uploadBytes, getDownloadURL} from 'firebase/storage';
 import { getDatabase, ref, set } from 'firebase/database';
-<<<<<<< HEAD
->>>>>>> main
-=======
 import { v4 as uuidv4 } from 'uuid'; //https://www.npmjs.com/package/uuid
->>>>>>> main
 
 
 function ImageUploader(props) {
@@ -52,6 +43,7 @@ function ImageUploader(props) {
         await set (dbRef,{
             title:imageTitle, url: imageUrl
         });
+        navigate('/');
     }
 
     return (
