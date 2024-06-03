@@ -3,7 +3,7 @@ import '../specific-css/creationpage.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { ref as dbRef, push, set } from "firebase/database";
-import { storage, database } from '../firebaseConfig'; // Adjust the import path accordingly
+import { storage, database } from '../../firebaseConfig'; // Ensure the path is correct
 
 function ImageUploader() {
     const [imagePreviewUrl, setImagePreviewUrl] = useState('');
@@ -15,9 +15,11 @@ function ImageUploader() {
         const file = event.target.files[0];
         setImageFile(file);
         if (file) {
+            console.log('File selected:', file);
             const reader = new FileReader();
             reader.onloadend = () => {
                 setImagePreviewUrl(reader.result);
+                console.log('Image preview URL set');
             };
             reader.readAsDataURL(file);
         }
@@ -33,6 +35,7 @@ function ImageUploader() {
 
     const handleUpload = () => {
         if (imageFile && imageTitle) {
+            console.log('Starting upload...');
             const storageRef = ref(storage, 'images/' + imageFile.name);
             const uploadTask = uploadBytesResumable(storageRef, imageFile);
 
@@ -48,9 +51,13 @@ function ImageUploader() {
                     getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
                         console.log('File available at', downloadURL);
                         saveFileURL(downloadURL, imageTitle);
+                    }).catch((error) => {
+                        console.error('Failed to get download URL:', error);
                     });
                 }
             );
+        } else {
+            console.log('Image file or title is missing');
         }
     };
 
