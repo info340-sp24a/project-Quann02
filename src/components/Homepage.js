@@ -4,12 +4,11 @@ import { Popup } from './Popup';
 import { Link } from 'react-router-dom';
 import { getDatabase, ref, onValue, update } from "firebase/database";
 
-// We Cook
-
 export function Homepage() {
     const [popUp, setPopup] = useState(false);
     const [images, setImages] = useState([]);
-    const [newComments, setNewComments] = useState({}); // To store comments for each image separately
+    const [newComments, setNewComments] = useState({});
+    const [searchQuery, setSearchQuery] = useState('');
 
     useEffect(() => {
         const database = getDatabase();
@@ -41,7 +40,6 @@ export function Homepage() {
         const db = getDatabase();
         const imageRef = ref(db, 'images/' + imageId);
 
-        // Update the comments field in the database
         const updatedComments = images.find(image => image.id === imageId).comments || [];
         updatedComments.push(newComments[imageId]);
 
@@ -49,12 +47,15 @@ export function Homepage() {
             comments: updatedComments
         });
 
-        // Clear the comment input field
         setNewComments({
             ...newComments,
             [imageId]: ''
         });
     };
+
+    const filteredImages = images.filter(image =>
+        image.title.toLowerCase().includes(searchQuery.toLowerCase())
+    );    
 
     return (
         <div>
@@ -76,11 +77,18 @@ export function Homepage() {
             <main>
                 <h2 className="main-title">Personal Gallery</h2>
                 <div className="search-bar">
-                    <input id="prune" type="text" className="form-control" placeholder="Search" />
+                    <input
+                        id="prune"
+                        type="text"
+                        className="form-control"
+                        placeholder="Search"
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                    />
                     <button className="btn btn-search">search</button>
                 </div>
                 <div className="art-gallery">
-                    {images.length > 0 ? images.map(image => (
+                    {filteredImages.length > 0 ? filteredImages.map(image => (
                         <div key={image.id} className="art-card">
                             <img src={image.url} alt={image.title} />
                             <div className="art-card-title">{image.title}</div>
