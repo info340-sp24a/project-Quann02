@@ -1,7 +1,12 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getDatabase } from "firebase/database";
-
+import { getStorage } from 'firebase/storage';
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
+import { BrowserRouter} from 'react-router-dom';
+import App from './components/App';
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyCUTLqvMOe61sjDSZ_EMEh8Q4YyQ1ro-do",
@@ -20,11 +25,6 @@ const database = getDatabase(app);
 
 export { storage, database };
 
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import { BrowserRouter} from 'react-router-dom';
-import App from './components/App';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
