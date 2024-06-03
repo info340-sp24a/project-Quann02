@@ -1,25 +1,18 @@
 import React, { useState } from 'react';
 import '../specific-css/creationpage.css';
-import { Link, useNavigate } from 'react-router-dom';
-import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import { ref as dbRef, push, set } from "firebase/database";
-import { storage, database } from '../../firebaseConfig'; // Ensure the path is correct
+import { Link } from 'react-router-dom';
+
 
 function ImageUploader() {
     const [imagePreviewUrl, setImagePreviewUrl] = useState('');
     const [imageTitle, setImageTitle] = useState('');
-    const [imageFile, setImageFile] = useState(null);
-    const navigate = useNavigate();
 
     const handleFileChange = (event) => {
         const file = event.target.files[0];
-        setImageFile(file);
         if (file) {
-            console.log('File selected:', file);
             const reader = new FileReader();
             reader.onloadend = () => {
                 setImagePreviewUrl(reader.result);
-                console.log('Image preview URL set');
             };
             reader.readAsDataURL(file);
         }
@@ -28,51 +21,11 @@ function ImageUploader() {
     const handleClickImageArea = () => {
         document.getElementById('fileInput').click();
     };
-
     const handleTitleChange = (event) => {
         setImageTitle(event.target.value);
     };
 
-    const handleUpload = () => {
-        if (imageFile && imageTitle) {
-            console.log('Starting upload...');
-            const storageRef = ref(storage, 'images/' + imageFile.name);
-            const uploadTask = uploadBytesResumable(storageRef, imageFile);
-
-            uploadTask.on('state_changed', 
-                (snapshot) => {
-                    const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-                    console.log('Upload is ' + progress + '% done');
-                }, 
-                (error) => {
-                    console.error('Upload failed:', error);
-                }, 
-                () => {
-                    getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-                        console.log('File available at', downloadURL);
-                        saveFileURL(downloadURL, imageTitle);
-                    }).catch((error) => {
-                        console.error('Failed to get download URL:', error);
-                    });
-                }
-            );
-        } else {
-            console.log('Image file or title is missing');
-        }
-    };
-
-    const saveFileURL = (downloadURL, title) => {
-        const imagesRef = dbRef(database, 'images');
-        const newImageRef = push(imagesRef);
-        set(newImageRef, {
-            title: title,
-            url: downloadURL
-        }).then(() => {
-            console.log('File URL saved to database successfully.');
-        }).catch((error) => {
-            console.error('Error saving file URL to database:', error);
-        });
-    };
+    
 
     return (
         <div>
@@ -91,7 +44,7 @@ function ImageUploader() {
                     </div>
                 </div>
             </header>
-            <div className="container text-center">
+            <div className = "container text-center">
                 <main className="main-space container">
                     <h2 className="page-title">Upload Image</h2>
                     <div className="upload-icon-wrapper">
@@ -113,7 +66,7 @@ function ImageUploader() {
                         onChange={handleFileChange}
                         id="fileInput"
                     />
-                    <button className="btn btn-primary py-3" onClick={handleUpload} disabled={!imageTitle}>Upload Image</button>
+                    <button className="btn btn-primary py-3" disabled={!imageTitle}>Upload Image</button>
                 </main>
             </div>
             <nav className="navigation-space">
