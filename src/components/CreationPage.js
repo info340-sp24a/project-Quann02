@@ -1,27 +1,28 @@
 import React, { useState } from 'react';
 import '../specific-css/creationpage.css';
 import { Link, useNavigate } from 'react-router-dom';
+<<<<<<< HEAD
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { ref as dbRef, push, set } from "firebase/database";
 import { storage, database } from '../../firebaseConfig'; // Adjust the import path accordingly
+=======
+import {getStorage, ref as storageRef, uploadBytes, getDownloadURL} from 'firebase/storage';
+import { getDatabase, ref, set } from 'firebase/database';
+>>>>>>> main
 
-function ImageUploader() {
+
+function ImageUploader(props) {
     const [imagePreviewUrl, setImagePreviewUrl] = useState('');
     const [imageTitle, setImageTitle] = useState('');
-    const [imageFile, setImageFile] = useState(null);
+    const [imageFile, setImageFile] = useState(undefined);
     const navigate = useNavigate();
 
     const handleFileChange = (event) => {
-        const file = event.target.files[0];
-        setImageFile(file);
-        if (file) {
-            const reader = new FileReader();
-            reader.onloadend = () => {
-                setImagePreviewUrl(reader.result);
-            };
-            reader.readAsDataURL(file);
-        }
+        const File = event.target.files[0];
+        setImageFile(File);
+        setImagePreviewUrl(URL.createObjectURL(File));
     };
+    
 
     const handleClickImageArea = () => {
         document.getElementById('fileInput').click();
@@ -29,43 +30,20 @@ function ImageUploader() {
 
     const handleTitleChange = (event) => {
         setImageTitle(event.target.value);
-    };
-
-    const handleUpload = () => {
-        if (imageFile && imageTitle) {
-            const storageRef = ref(storage, 'images/' + imageFile.name);
-            const uploadTask = uploadBytesResumable(storageRef, imageFile);
-
-            uploadTask.on('state_changed', 
-                (snapshot) => {
-                    const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-                    console.log('Upload is ' + progress + '% done');
-                }, 
-                (error) => {
-                    console.error('Upload failed:', error);
-                }, 
-                () => {
-                    getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-                        console.log('File available at', downloadURL);
-                        saveFileURL(downloadURL, imageTitle);
-                    });
-                }
-            );
-        }
-    };
-
-    const saveFileURL = (downloadURL, title) => {
-        const imagesRef = dbRef(database, 'images');
-        const newImageRef = push(imagesRef);
-        set(newImageRef, {
-            title: title,
-            url: downloadURL
-        }).then(() => {
-            console.log('File URL saved to database successfully.');
-        }).catch((error) => {
-            console.error('Error saving file URL to database:', error);
+    }
+    const handleImageUpload = async(event) => {
+        console.log("uploading", imageFile);
+        const storage = getStorage();
+        const imageRef = storageRef(storage, 'images/' + imageFile.imageTitle);
+        await uploadBytes(imageRef, imageFile)
+        const imageUrl = await getDownloadURL(imageRef);
+        console.log(imageUrl);
+        const db = getDatabase();
+        const dbRef = ref(db, 'images/' +imageFile.imageTitle)
+        await set (dbRef,{
+            title:imageTitle, url: imageUrl
         });
-    };
+    }
 
     return (
         <div>
@@ -100,13 +78,9 @@ function ImageUploader() {
                         className="form-control mb-3" placeholder="Image Title" onChange={handleTitleChange}>
                     </textarea>
                     <input
-                        type="file"
-                        accept="image/*"
-                        style={{ display: 'none' }}
-                        onChange={handleFileChange}
-                        id="fileInput"
+                        type="file" accept="image/*" style={{ display: 'none' }} onChange={handleFileChange} id="fileInput"
                     />
-                    <button className="btn btn-primary py-3" onClick={handleUpload} disabled={!imageTitle}>Upload Image</button>
+                    <button className="btn btn-primary py-3" onClick={handleImageUpload} disabled={!imageTitle}>Upload Image</button>
                 </main>
             </div>
             <nav className="navigation-space">
