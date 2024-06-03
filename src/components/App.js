@@ -5,7 +5,6 @@ import ImageUploader from "./CreationPage.js";
 import { Help } from "./Help";
 
 function App() {
-  firebasePush(allMMesssages, newMessageObj);
   return (
     <div>
       <Routes>
