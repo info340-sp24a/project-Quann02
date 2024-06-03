@@ -10,14 +10,20 @@ export function Homepage() {
 
     useEffect(() => {
         const database = getDatabase();
-        const imagesRef = ref(database, 'images'); // Adjust the path to where your images are stored
+        const imagesRef = ref(database, 'images');
         onValue(imagesRef, (snapshot) => {
             const data = snapshot.val();
-            const loadedImages = [];
-            for (let id in data) {
-                loadedImages.push({ id, ...data[id] });
+            if (data) {
+                const loadedImages = [];
+                for (let id in data) {
+                    loadedImages.push({ id, ...data[id] });
+                }
+                setImages(loadedImages);
+            } else {
+                console.error("No data available");
             }
-            setImages(loadedImages);
+        }, (error) => {
+            console.error("Error fetching data: ", error);
         });
     }, []);
 
@@ -44,7 +50,7 @@ export function Homepage() {
                     <input id="prune" type="text" className="form-control" placeholder="Search" />
                 </div>
                 <div className="art-gallery">
-                    {images.map(image => (
+                    {images.length > 0 ? images.map(image => (
                         <div key={image.id} className="art-card">
                             <img src={image.url} alt={image.title} />
                             <div className="art-card-title">{image.title}</div>
@@ -52,7 +58,7 @@ export function Homepage() {
                                 <i className="material-icons" onClick={() => setPopup(true)}>chat_bubble_outline</i>
                             </div>
                         </div>
-                    ))}
+                    )) : <p>No images available</p>}
                 </div>
             </main>
             <Popup trigger={popUp} setTrigger={setPopup} />
