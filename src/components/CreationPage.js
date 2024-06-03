@@ -30,22 +30,16 @@ function ImageUploader(props) {
     const handleImageUpload = async(event) => {
         console.log("uploading", imageFile);
         const storage = getStorage();
-<<<<<<< HEAD
         const uniqueImageId = uuidv4(); //give it a unqiue identifier, don't remove this
         const imageRef = storageRef(storage, 'images/' + uniqueImageId);
-=======
-        const imageRef = storageRef(storage, 'images/' + imageFile.getDownloadURL);
->>>>>>> f69e07a55f457ef099d2029206df3c0ffcc314b3
+        // const imageRef = storageRef(storage, 'images/' + imageFile.getDownloadURL);
         await uploadBytes(imageRef, imageFile)
         const imageUrl = await getDownloadURL(imageRef); //don't change
         console.log(imageUrl);
 
         const db = getDatabase();
-<<<<<<< HEAD
         const dbRef = ref(db, 'images/' + uniqueImageId) //remove image.File to uniqueImage, don't change
-=======
-        const dbRef = ref(db, 'images/' + imageFile.getDownloadURL)
->>>>>>> f69e07a55f457ef099d2029206df3c0ffcc314b3
+        // const dbRef = ref(db, 'images/' + imageFile.getDownloadURL)
         await set (dbRef,{
             title:imageTitle, url: imageUrl
         });
