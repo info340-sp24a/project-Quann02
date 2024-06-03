@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import '../specific-css/creationpage.css';
 import { Link, useNavigate } from 'react-router-dom';
-import {getStorage, ref as storageRef, uploadBytes} from 'firebase/storage';
+import {getStorage, ref as storageRef, uploadBytes, getDownloadURL} from 'firebase/storage';
+import { getDatabase, ref, set } from 'firebase/database';
 
 
 function ImageUploader(props) {
@@ -25,11 +26,17 @@ function ImageUploader(props) {
     const handleTitleChange = (event) => {
         setImageTitle(event.target.value);
     }
-    const handleImageUpload = (event) => {
+    const handleImageUpload = async(event) => {
         console.log("uploading", imageFile);
         const storage = getStorage();
-        const imageRef = storageRef(storage, 'images/' + imageFile.name);
-        uploadBytes(imageRef, imageFile)
+        const imageRef = storageRef(storage, 'images/' + imageFile.imageTitle);
+        await uploadBytes(imageRef, imageFile)
+        const url = await getDownloadURL(imageRef);
+        const db = getDatabase();
+        const dbRef = ref(db, 'images/' +imageFile.imageTitle)
+        await set (dbRef,{
+            title:imageTitle, url: url
+        });
     }
 
     return (
