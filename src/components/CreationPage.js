@@ -1,31 +1,43 @@
 import React, { useState } from 'react';
 import '../specific-css/creationpage.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import {getStorage, ref as storageRef, uploadBytes, getDownloadURL} from 'firebase/storage';
+import { getDatabase, ref, set } from 'firebase/database';
 
 
-function ImageUploader() {
+function ImageUploader(props) {
     const [imagePreviewUrl, setImagePreviewUrl] = useState('');
     const [imageTitle, setImageTitle] = useState('');
+    const [imageFile, setImageFile] = useState(undefined);
+    const navigate = useNavigate();
+    const {currentUser} = props;
 
     const handleFileChange = (event) => {
-        const file = event.target.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onloadend = () => {
-                setImagePreviewUrl(reader.result);
-            };
-            reader.readAsDataURL(file);
-        }
+        const File = event.target.files[0];
+        setImageFile(File);
+        setImagePreviewUrl(URL.createObjectURL(File));
     };
+    
 
     const handleClickImageArea = () => {
         document.getElementById('fileInput').click();
     };
+
     const handleTitleChange = (event) => {
         setImageTitle(event.target.value);
-    };
-
-    
+    }
+    const handleImageUpload = async(event) => {
+        console.log("uploading", imageFile);
+        const storage = getStorage();
+        const imageRef = storageRef(storage, 'images/' + imageFile.imageTitle);
+        await uploadBytes(imageRef, imageFile)
+        const url = await getDownloadURL(imageRef);
+        const db = getDatabase();
+        const dbRef = ref(db, 'images/' +imageFile.imageTitle)
+        await set (dbRef,{
+            title:imageTitle, url: url
+        });
+    }
 
     return (
         <div>
@@ -44,7 +56,7 @@ function ImageUploader() {
                     </div>
                 </div>
             </header>
-            <div className = "container text-center">
+            <div className="container text-center">
                 <main className="main-space container">
                     <h2 className="page-title">Upload Image</h2>
                     <div className="upload-icon-wrapper">
@@ -60,13 +72,9 @@ function ImageUploader() {
                         className="form-control mb-3" placeholder="Image Title" onChange={handleTitleChange}>
                     </textarea>
                     <input
-                        type="file"
-                        accept="image/*"
-                        style={{ display: 'none' }}
-                        onChange={handleFileChange}
-                        id="fileInput"
+                        type="file" accept="image/*" style={{ display: 'none' }} onChange={handleFileChange} id="fileInput"
                     />
-                    <button className="btn btn-primary py-3" disabled={!imageTitle}>Upload Image</button>
+                    <button className="btn btn-primary py-3" onClick={handleImageUpload} disabled={!imageTitle}>Upload Image</button>
                 </main>
             </div>
             <nav className="navigation-space">
