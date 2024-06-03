@@ -3,6 +3,7 @@ import '../specific-css/creationpage.css';
 import { Link, useNavigate } from 'react-router-dom';
 import {getStorage, ref as storageRef, uploadBytes, getDownloadURL} from 'firebase/storage';
 import { getDatabase, ref, set } from 'firebase/database';
+import { v4 as uuidv4 } from 'uuid'; //https://www.npmjs.com/package/uuid
 
 
 function ImageUploader(props) {
@@ -28,12 +29,13 @@ function ImageUploader(props) {
     const handleImageUpload = async(event) => {
         console.log("uploading", imageFile);
         const storage = getStorage();
-        const imageRef = storageRef(storage, 'images/' + imageFile.imageTitle);
+        const uniqueImageId = uuidv4(); //give it a unqiue identifier, don't remove this
+        const imageRef = storageRef(storage, 'images/' + uniqueImageId);
         await uploadBytes(imageRef, imageFile)
-        const imageUrl = await getDownloadURL(imageRef);
+        const imageUrl = await getDownloadURL(imageRef); //don't change
         console.log(imageUrl);
         const db = getDatabase();
-        const dbRef = ref(db, 'images/' +imageFile.imageTitle)
+        const dbRef = ref(db, 'images/' + uniqueImageId) //remove image.File to uniqueImage, don't change
         await set (dbRef,{
             title:imageTitle, url: imageUrl
         });
