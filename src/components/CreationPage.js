@@ -31,15 +31,17 @@ function ImageUploader(props) {
     const handleTitleChange = (event) => {
         setImageTitle(event.target.value);
     }
+    
     const handleImageUpload = async(event) => {
         console.log("uploading", imageFile);
         const storage = getStorage();
-        const imageRef = storageRef(storage, 'images/' + imageFile.imageTitle);
+        const imageRef = storageRef(storage, 'images/' + imageFile.getDownloadURL);
         await uploadBytes(imageRef, imageFile)
         const imageUrl = await getDownloadURL(imageRef);
         console.log(imageUrl);
+
         const db = getDatabase();
-        const dbRef = ref(db, 'images/' +imageFile.imageTitle)
+        const dbRef = ref(db, 'images/' + imageFile.getDownloadURL)
         await set (dbRef,{
             title:imageTitle, url: imageUrl
         });
