@@ -47,8 +47,7 @@ function ImageUploader() {
                 () => {
                     getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
                         console.log('File available at', downloadURL);
-                        saveFileURL(downloadURL, imageTitle).then(()=>
-                        navigate('/'));
+                        saveFileURL(downloadURL, imageTitle);
                     });
                 }
             );
