@@ -10,7 +10,6 @@ function ImageUploader(props) {
     const [imageTitle, setImageTitle] = useState('');
     const [imageFile, setImageFile] = useState(undefined);
     const navigate = useNavigate();
-    const {currentUser} = props;
 
     const handleFileChange = (event) => {
         const File = event.target.files[0];
@@ -31,11 +30,12 @@ function ImageUploader(props) {
         const storage = getStorage();
         const imageRef = storageRef(storage, 'images/' + imageFile.imageTitle);
         await uploadBytes(imageRef, imageFile)
-        const url = await getDownloadURL(imageRef);
+        const imageUrl = await getDownloadURL(imageRef);
+        console.log(imageUrl);
         const db = getDatabase();
         const dbRef = ref(db, 'images/' +imageFile.imageTitle)
         await set (dbRef,{
-            title:imageTitle, url: url
+            title:imageTitle, url: imageUrl
         });
     }
 
