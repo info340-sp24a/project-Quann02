@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import '../specific-css/creationpage.css';
 import { Link } from 'react-router-dom';
 
+
 function ImageUploader() {
     const [imagePreviewUrl, setImagePreviewUrl] = useState('');
     const [imageTitle, setImageTitle] = useState('');
@@ -22,6 +23,7 @@ function ImageUploader() {
     };
     const handleTitleChange = (event) => {
         setImageTitle(event.target.value);
+    
     };
     return (
         <div>
@@ -62,7 +64,7 @@ function ImageUploader() {
                         onChange={handleFileChange}
                         id="fileInput"
                     />
-                    <button className="btn btn-primary py-3">Upload Image</button>
+                    <button className="btn btn-primary py-3" disabled={!imageTitle}>Upload Image</button>
                 </main>
             </div>
             <nav className="navigation-space">
