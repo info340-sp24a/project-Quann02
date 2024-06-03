@@ -40,7 +40,7 @@ export function Homepage() {
         const db = getDatabase();
         const imageRef = ref(db, 'images/' + imageId);
 
-        const updatedComments = images.find(image => image.id === imageId).comments || [];
+        const updatedComments = images.find(image => image.id === imageId).comments || []; // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find
         updatedComments.push(newComments[imageId]);
 
         await update(imageRef, {
