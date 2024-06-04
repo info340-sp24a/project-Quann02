@@ -85,7 +85,6 @@ export function Homepage() {
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
                     />
-                    <button className="btn btn-search" aria-label="button for search query">search</button>
                 </div>
                 <div className="art-gallery">
                     {filteredImages.length > 0 ? filteredImages.map(image => (
