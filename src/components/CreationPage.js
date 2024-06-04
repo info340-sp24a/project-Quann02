@@ -81,7 +81,7 @@ function ImageUploader(props) {
                     <input
                         type="file" accept="image/*" style={{ display: 'none' }} onChange={handleFileChange} id="fileInput"
                     />
-                    <button className="btn btn-primary py-3" onClick={handleImageUpload} disabled={!imageTitle}>Upload Image</button>
+                    <button className="btn btn-primary py-3" onClick={handleImageUpload} disabled={!imageTitle} aria-label="submission feature">Upload Image</button>
                 </main>
             </div>
             <nav className="navigation-space">
