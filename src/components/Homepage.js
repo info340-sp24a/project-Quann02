@@ -85,7 +85,7 @@ export function Homepage() {
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
                     />
-                    <button className="btn btn-search">search</button>
+                    <button className="btn btn-search" aria-label="button for search query">search</button>
                 </div>
                 <div className="art-gallery">
                     {filteredImages.length > 0 ? filteredImages.map(image => (
@@ -110,7 +110,7 @@ export function Homepage() {
                                         value={newComments[image.id] || ''}
                                         onChange={(e) => handleCommentChange(e, image.id)}
                                     />
-                                    <button className="comment-btn" onClick={() => handleAddComment(image.id)}>Add Comment</button>
+                                    <button className="comment-btn" aria-label="button for adding comments" onClick={() => handleAddComment(image.id)}>Add Comment</button>
                                 </div>
                             </div>
                         </div>
