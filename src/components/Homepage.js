@@ -75,7 +75,7 @@ export function Homepage() {
                 </div>
             </header>
             <main>
-                <h2 className="main-title">Personal Gallery</h2>
+                <h2 className="main-title">Public Gallery</h2>
                 <div className="search-bar">
                     <input
                         id="prune"
